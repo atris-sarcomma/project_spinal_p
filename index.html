@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PyForge — Interactive Python Learning Hub</title>
+  <meta name="description" content="Interactive Python checklist, deep lessons, tasks, quizzes and AI tutor." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div><div class="bg-orb orb-b"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">Py</span><div><b>PyForge</b><small>Interactive Python Learning Hub</small></div></div>
+    <div class="top-actions">
+      <button class="ghost" id="resetBtn">Reset progress</button>
+      <button class="primary" id="askTop">Ask AI <span>⌘K</span></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="side-title">ROADMAP</div>
+      <div id="levelNav"></div>
+      <div class="side-card">
+        <div class="mini-label">YOUR PROGRESS</div>
+        <div class="side-progress"><span id="sidePct">0%</span><div class="progress-track"><i id="sideBar"></i></div></div>
+        <p id="sideCount">0 / 0 topics completed</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero">
+        <div class="eyebrow">LEARN → PRACTICE → BUILD</div>
+        <h1>Master Python, one <span>concept</span> at a time.</h1>
+        <p>Everything from fundamentals to AI/ML and quantitative trading — now with deep explanations, interactive tasks, quizzes and an AI tutor.</p>
+        <div class="hero-stats">
+          <div><strong id="heroPct">0%</strong><small>overall</small></div>
+          <div><strong id="doneNum">0</strong><small>completed</small></div>
+          <div><strong id="topicNum">0</strong><small>topics</small></div>
+          <div><strong>14</strong><small>levels</small></div>
+        </div>
+      </section>
+
+      <section class="toolbar">
+        <div class="search"><span>⌕</span><input id="search" placeholder="Search topics, e.g. decorators, NumPy, volatility…" /></div>
+        <select id="filter"><option value="all">All topics</option><option value="todo">Not completed</option><option value="done">Completed</option></select>
+      </section>
+
+      <section id="levels"></section>
+    </main>
+  </div>
+
+  <button class="ai-fab" id="aiFab"><span>✦</span> AI Tutor</button>
+
+  <div class="modal hidden" id="lessonModal">
+    <div class="modal-card lesson-card">
+      <button class="close" data-close="lessonModal">×</button>
+      <div class="lesson-head"><div class="pill" id="lessonLevel">LEVEL 1</div><h2 id="lessonTitle">Topic</h2><p id="lessonSub">Interactive lesson</p></div>
+      <div class="lesson-tabs"><button class="active" data-tab="learn">Learn</button><button data-tab="task">Task</button><button data-tab="quiz">Quiz</button></div>
+      <div id="lessonBody" class="lesson-body"></div>
+      <div class="lesson-footer"><button class="ghost" id="aiExplain">✦ Generate deeper explanation</button><button class="primary" id="markDone">Mark complete ✓</button></div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="aiModal">
+    <div class="modal-card chat-card">
+      <button class="close" data-close="aiModal">×</button>
+      <div class="chat-head"><div class="ai-logo">✦</div><div><h2>PyForge AI Tutor</h2><p>Ask about Python, AI/ML, algorithms or quant topics.</p></div></div>
+      <div id="chatMessages" class="chat-messages"><div class="msg ai"><b>AI Tutor</b><p>Ask me anything. If you have a topic selected, I’ll use it as context.</p></div></div>
+      <div class="quick-prompts"><button>Explain this like I'm new</button><button>Give me a coding task</button><button>Quiz me</button></div>
+      <form id="chatForm" class="chat-form"><textarea id="chatInput" rows="2" placeholder="Ask a question…"></textarea><button class="primary" type="submit">Send ↑</button></form>
+      <small class="disclaimer">AI answers are generated dynamically. Verify important technical or financial claims.</small>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="curriculum.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
